@@ -1,0 +1,43 @@
+---
+interface Props {
+  categories: string[];
+}
+
+const { categories } = Astro.props as Props;
+
+---
+
+<div class="mb-8 p-4 border rounded-lg bg-white shadow">
+  <h3 class="text-lg font-semibold mb-4">Filtrar por Categorías</h3>
+  <div class="flex flex-wrap gap-4">
+    {categories.map(category => (
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="category" value={category} class="form-radio h-4 w-4 text-blue-600" id={category} />
+        <span class="text-gray-700">{category}</span>
+      </label>
+    ))}
+  </div>
+</div>
+
+<style>
+  .form-radio {
+    border-radius: 0.25rem;
+    border-color: #d1d5db;
+  }
+  .form-radio:checked {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+      input.addEventListener('change', (event) => {
+        const target = event.target as HTMLInputElement;
+        const { value } = target;
+        window.location.href = `/forums/${value.toLowerCase()}`;
+      });
+    });
+  });
+</script>

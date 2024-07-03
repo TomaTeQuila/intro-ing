@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import FilterCard from '../components/FilterCard.astro';
+
+
+interface Forum {
+  id: number;
+  title: string;
+  description: string;
+  link: string;
+  category: string;
+}
+
+const forums: Forum[] = [
+  { id: 1, title: 'Ayudaa no se resolver este ejercicio de derivadas!!', description: 'En este ejercicio de derivadas me están pidiendo que ...', link: '/forums/ayuda-derivadas', category: 'Matemáticas' },
+  { id: 2, title: 'Necesito ayuda con un problema de física', description: 'No entiendo cómo resolver este problema de física relacionado con ...', link: '/forums/ayuda-fisica', category: 'Física' },
+  { id: 3, title: 'Problemas con la programación en Python', description: 'Estoy teniendo dificultades para implementar este algoritmo en Python ...', link: '/forums/ayuda-python', category: 'Programación' },
+  { id: 4, title: 'Cómo resolver esta ecuación diferencial', description: 'Estoy atrapado con esta ecuación diferencial de segundo orden...', link: '/forums/ayuda-ecuacion-diferencial', category: 'Matemáticas' },
+  { id: 5, title: 'Necesito ayuda con este problema de termodinámica', description: 'No entiendo cómo aplicar la primera ley de la termodinámica en este problema...', link: '/forums/ayuda-termodinamica', category: 'Física' },
+  { id: 6, title: '¿Alguien puede explicarme la estructura de datos árboles?', description: 'Tengo problemas para entender cómo funcionan los árboles binarios...', link: '/forums/ayuda-arboles-datos', category: 'Programación' },
+  { id: 7, title: 'Ayuda con la interpretación de resultados estadísticos', description: 'No sé cómo interpretar los resultados de esta prueba estadística...', link: '/forums/ayuda-estadisticas', category: 'Estadísticas' },
+  { id: 8, title: 'Cómo mejorar mi gramática en inglés', description: 'Necesito consejos para mejorar mi gramática y redacción en inglés...', link: '/forums/ayuda-gramatica-ingles', category: 'Inglés' },
+  { id: 9, title: 'Problemas para entender la fotosíntesis', description: 'Estoy confundido con las etapas de la fotosíntesis, ¿alguien puede ayudarme?', link: '/forums/ayuda-fotosintesis', category: 'Biología' },
+  { id: 10, title: 'Ayuda con la resolución de problemas de circuitos eléctricos', description: 'No sé cómo resolver este circuito con múltiples resistencias...', link: '/forums/ayuda-circuitos-electricos', category: 'Física' },
+  { id: 11, title: 'Cómo implementar un algoritmo de búsqueda binaria', description: 'Tengo problemas para entender cómo funciona la búsqueda binaria...', link: '/forums/ayuda-busqueda-binaria', category: 'Programación' },
+  { id: 12, title: 'Dudas sobre la teoría de conjuntos', description: 'No entiendo cómo resolver estos ejercicios de teoría de conjuntos...', link: '/forums/ayuda-teoria-conjuntos', category: 'Matemáticas' },
+  { id: 13, title: 'Necesito ayuda con la sintaxis de SQL', description: 'Tengo problemas para escribir consultas en SQL correctamente...', link: '/forums/ayuda-sql', category: 'Programación' },
+  { id: 14, title: '¿Cómo aplicar la ley de gravitación universal?', description: 'No sé cómo usar la ley de gravitación universal para resolver este problema...', link: '/forums/ayuda-gravitacion-universal', category: 'Física' },
+  { id: 15, title: 'Ayuda con la traducción de un texto en inglés', description: 'No sé cómo traducir algunas frases complejas en este texto...', link: '/forums/ayuda-traduccion-ingles', category: 'Inglés' },
+  { id: 16, title: 'Dudas sobre el ciclo de Krebs', description: 'No entiendo bien las etapas del ciclo de Krebs...', link: '/forums/ayuda-ciclo-krebs', category: 'Biología' },
+  { id: 17, title: 'Cómo resolver integrales definidas', description: 'Estoy atascado en este ejercicio de integrales definidas...', link: '/forums/ayuda-integrales-definidas', category: 'Matemáticas' },
+  { id: 18, title: 'Necesito ayuda con este problema de química orgánica', description: 'No entiendo cómo hacer esta reacción orgánica...', link: '/forums/ayuda-quimica-organica', category: 'Química' },
+  { id: 19, title: '¿Cómo mejorar mi pronunciación en inglés?', description: 'Necesito consejos para mejorar mi pronunciación en inglés...', link: '/forums/ayuda-pronunciacion-ingles', category: 'Inglés' },
+  { id: 20, title: 'Ayuda con el análisis de algoritmos', description: 'Tengo problemas para entender cómo analizar la complejidad de los algoritmos...', link: '/forums/ayuda-analisis-algoritmos', category: 'Programación' }
+];
+
+const categories = [...new Set(forums.map(forum => forum.category))];
+---
+
+<Layout title="Foros">
+  <FilterCard categories={categories} />
+  <section class="mb-10">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Foros</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {forums.map((forum: Forum) => (
+        <Card title={forum.title} description={forum.description} link={`/${forum.id}`} category={forum.category} />
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Agrega cualquier estilo adicional que necesites aquí */
+</style>

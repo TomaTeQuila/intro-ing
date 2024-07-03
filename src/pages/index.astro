@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+---
+
+<Layout title="index">
+	<section class="text-center mb-10">
+		<h1 class="text-4xl font-bold text-gray-800 mb-4">Bienvenido a <span class="bg-gradient-to-r from-blue-600 to-indigo-400 text-transparent bg-clip-text">MyStudy</span><span class="text-3xl">📕</span></h1>
+		<p class="text-gray-700 mb-8">Una comunidad donde puedes hacer preguntas sobre temas de estudio como física, matemáticas, programación y recibir ayuda de otros.</p>
+		<a href="/forums" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">Explorar Foros</a>
+	</section>
+	
+	<section class="mb-10">
+		<h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Foros Destacados</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			<Card title="Ayuda con ejercicios de dinámica" description="Estoy teniendo problemas para resolver ejercicios de dinámica en física. ¿Alguien puede explicarme los conceptos básicos?" link="/forums/ayuda-con-ejercicios-de-dinamica" category="Física" />
+			<Card title="Dudas sobre integrales triples" description="No entiendo cómo resolver integrales triples en cálculo. ¿Podrían darme algunos ejemplos paso a paso?" link="/forums/dudas-sobre-integrales-triples" category="Matemáticas"/>
+			<Card title="Optimización de código en Python" description="Mi código en Python está funcionando muy lento. ¿Alguien tiene consejos para optimizarlo?" link="/forums/optimizacion-de-codigo-en-python" category="Programación" />
+		</div>
+	</section>
+</Layout>
+
+<style>
+
+</style>
